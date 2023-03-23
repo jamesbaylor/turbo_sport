@@ -1,0 +1,10 @@
+
+<%= turbo_frame_tag "history" do%>
+
+  <div class="flex flex-col w-full gap-3"> 
+    <h1 class="text-2xl font-bold text-purple-700 uppercase" >Attended Events</h1>
+    <% current_user.attended_events.each do |event| %>
+      <%= render "event_card", event: event %> 
+    <%end%>
+  </div>
+<%end%>

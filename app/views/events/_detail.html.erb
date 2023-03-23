@@ -1,0 +1,12 @@
+<div class="flex flex-col border border-gray-200 shadow-md p-2 gap-2" >
+ <h2> <%= event.name %> </h2>
+  <p> <%= event.description %> </p>
+  <p> <%= event.location %> </p>
+  <p> <%= event.start_time %> </p>
+  <p> <%= event.end_time %> </p>
+  <p> <%= event.price %> </p>
+  <p> <%= event.is_free %> </p>
+  <p> <%= event.available_spots %> </p>
+  <p> <%= event.maximum_applications %> </p>
+  <%= button_to "JOIN", event_requests_path(event) , class:"btn blue-green", method: :post %>
+</div>

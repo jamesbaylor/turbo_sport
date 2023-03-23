@@ -1,0 +1,17 @@
+<div id="<%= dom_id request %>" class="border border-gray-200 rounded p-[10px]">
+  <span>
+    <b><%= request.user.full_name%></b>
+    requested to attend 
+    <b><%= request.event.name %></b>
+  </span>
+  <div class="flex justify-end pt-2 gap-3 w-full">
+    <%= button_to "Accept", accept_path(request), 
+        class:"btn-edit text-green-600 capitalize text-sm
+         bg-white border-2 border-green-600 hover:text-white
+          hover:bg-green-600", method: :post %>
+    <%= button_to "Reject", reject_path(request), 
+        class:"btn-delete text-red-600 capitalize text-sm 
+        bg-white border-2 border-red-600 hover:text-white 
+        hover:bg-red-600", method: :post %>
+  </div>
+</div>

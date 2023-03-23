@@ -1,0 +1,43 @@
+<%= turbo_frame_tag 'search' do %>
+  <div class="flex flex-col md:flex-row gap-[2%] h-100">
+    <div class="flex flex-col md:w-[70%] gap-2"><%= turbo_frame_tag Event.new %>
+      <%= turbo_frame_tag "history" do %>
+        <div class="flex justify-between items-center pb-3" >
+          <h1 class="text-2xl font-bold text-purple-700 uppercase"> Available Events</h1>
+          <%= link_to "New event", new_event_path, class:"btn blue-green self-end",
+        data: { turbo_frame: "side_show" } %>
+        </div>
+        <div data-controller="pagination">
+          <%= turbo_frame_tag "events" do %>
+            <% @events.each do |event| %>
+              <%= render "event_card", event: event %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <%= turbo_frame_tag "side_show", class: "mt-12" do %>
+      <div class="w-full mt-3">
+        <% if current_user.upcoming_events %>
+          <h2 class="text-lg text-purple-600 text-center font-bold" > Upcoming Events</h2>
+          <% current_user.upcoming_events.each do |event| %>
+            <%= render "event_summary", event: event %>
+          <% end %>
+        <% end %>
+      </div>
+      <br>
+      <hr>
+      <br>
+      <div class="w-full mt-3">
+        <h2 class="text-lg text-purple-600 text-center font-bold" > Requests </h2>
+        <% if current_user.pending_requests.count == 0%>
+          <p class="text-center"> You have no pending requests </p>
+        <% else %>
+          <% current_user.pending_requests.each do |request| %>
+            <%= render request, request: request %>
+          <% end %>
+        <% end %>
+      </div>
+    <%end%>
+  </div>
+<% end %>

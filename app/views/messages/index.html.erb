@@ -1,0 +1,15 @@
+<div class="absolute right-2 bottom-5 min-w-[350px] 
+  min-h-[450px] border p-1 shadow-2xl  bg-purple-200 rounded">
+
+  <div class="relative flex flex-col gap-2 border border-gray-300
+   h-[390px] p-2 rounded shadow-lg shadow-gary-200 bg-white">
+    <h1>Chat Room</h1>
+
+    <div id="messages">
+      <% @messages.each do |message| %>
+        <%= render message %>
+      <% end %>
+    </div>  
+    <%= render "form", message: @message %> 
+  </div>
+</div>

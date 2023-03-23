@@ -1,0 +1,8 @@
+<div id="<%= dom_id message %>" class="min-h-[20px] border-[0.5px] border-gray-100 shadow-sm rounded">
+  <div class="flex items-center justify-between py-1 px-3">
+    <h2 class="text-sm font-gray-600 font-bold text-purple-400" ><%= message.room.user.full_name %></h2>
+    <h4 class="text-sm font-gray-600 text-purple-300"><%= message.created_at %></h4>
+  </div>
+  <p class="font-sm py-1 px-3"><%= message.text %></p>
+</div>
+

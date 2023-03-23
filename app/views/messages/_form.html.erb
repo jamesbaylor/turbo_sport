@@ -1,0 +1,11 @@
+
+<%= form_with(model: message, html: { class:"w-full absolute top-[395px]
+ left-[50%] -translate-x-[50%] shadow-lg"}) do |form| %>
+  <div class="relative overflow-hidder">
+    <%= form.text_field :text, class:"text-input rounded-xl" %>
+    <%= form.submit "Send", class: "btn-show bg-purple-800
+     text-white h-full z-10 absolute  right-0 top-[50%] -translate-y-[50%] rounded-r-xl",
+     method: :post, controller: :message, action: :create %>
+  </div>  
+<% end %>
+

@@ -1,0 +1,59 @@
+<%= link_to event_path(event), data:{turbo_frame: "side_show" } do %>
+  <%= turbo_frame_tag event do %>
+
+    <div class="card">
+      <div>       
+        <% if event.image.attached? %>
+          <%= cl_image_tag event.image.key, :width=>150, :crop=>"fill" %>
+        <% else %>
+          <img 
+
+          src="https://picsum.photos/id/<%= Random.rand(1025) %>/200/300" 
+          alt="event image" 
+          class="w-full h-48 object-cover">
+        <% end %>
+      </div>
+
+      
+      <div class="w-full text-center md:text-start md:w-2/4 flex flex-col justify-between gap-10">
+
+        <div>
+          <h2 class="text-2xl font-bold pb-2"><%= event.name %></h2>
+          <p class="text-gray-500"><%= event.description %></p>
+        </div>
+
+
+        <div class ="flex gap-2 justify-center md:justify-start" data-controller="storage" >
+
+          <%= link_to event_path(event), data:{turbo_frame: "side_show" }, class: "btn-edit flex gap-1 items-center" do %>
+            Schedule <%= render "shared/icons/arrow" %>
+          <% end %>
+
+          <%= button_to "", data:{ action: "storage#save"}, id: event.id, class: "btn-show flex gap-1 items-center" do %>
+                Save <%= render "shared/icons/save_icon" %> 
+          <% end %>
+        </div>
+      </div>
+
+        <div class="flex flex-col justify-between md:gap-10 w-[70%] md:w-[25%]">
+          <div class="flex flex-col gap-2 pb-2" >
+            <h4 class="flex justify-between text-gray-500 gap-3"> 
+                Starts <span class="text-gray-800 font-bold pl-2">
+                          <%= event.start_time.strftime("%b %-d at: %H:%M %Z") %>
+                      </span>
+             </h4>
+            <h4 class="flex justify-between text-gray-500 gap-3">
+                Ends <span class="text-gray-800 font-bold pl-2">
+                  <%= event.end_time.strftime("%b %-d at: %H:%M %Z") %> 
+                 </span>
+             </h4>
+          </div>
+          <div>            
+            <h4 class="flex justify-between text-gray-500 gap-3 order-1">
+              Location <span class="font-bold"><%= event.location%> </span>
+            </h4>
+          </div>  
+      </div>  
+    </div>
+  <% end %>
+<%end%>

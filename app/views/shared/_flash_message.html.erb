@@ -1,0 +1,14 @@
+<% flash.each do |type, message| %>
+    <div class="<%= type%> flex gap-3 items-center p-2 px-5 min-h-[40px] min-w-[300px] 
+                rounded max-w-[450px] shadow-sm shadow-red-300 mx-auto relative overflow-hidden" 
+                data-controller="flash" data-flash-target = "message">            
+      
+      <% if type == "notice" %>
+        <%= render "shared/icons/checkmark" %>
+      <% else %>
+        <%= render "shared/icons/warning" %>
+      <% end %>  
+      <span class="inline-block"> <%= message %> </span>
+    </div>
+  </div>
+<% end %>

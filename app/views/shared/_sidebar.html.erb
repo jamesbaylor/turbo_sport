@@ -1,0 +1,18 @@
+<div class="fixed hidden left-0 top-0 px-1 w-auto h-[100vh] bg-gray-200 z-10 pt-6 shadow-lg md:flex flex-col justify-between" >
+   <div class="logo w-10 h-10">
+    <%= link_to image_tag("logo.svg"), root_path %>
+  </div>
+
+  <ul class="flex flex-col gap-3 w-7 pb-7" >
+    <li class="">
+        <%= link_to history_path, data: { turbo_frame: "history" } do %>
+            <%= render "shared/icons/setting" %>
+        <% end %>
+    </li>    
+    <li> 
+      <%= link_to events_path do %>
+        <%= render "shared/icons/home"%>
+      <% end %>
+    </li>
+  </ul>
+</div>

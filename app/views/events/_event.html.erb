@@ -1,0 +1,19 @@
+<div class="flex flex-col border border-gray-200 shadow-md p-2 gap-2 w-full" >
+  <h2 class="text-2xl font-bold pb-2"><%= event.name %></h2>
+  <hr> 
+  <p class="text-gray-500"><%= event.description %></p>
+  <h4 class="text-gray-500"> Location: <span class="font-bold"><%= event.location %> </span> </h4>
+  <h4 class="text-gray-500"> Starts <span class="text-gray-800 font-bold pl-2"><%= event.start_time.strftime("%b %-d at: %H:%M %Z") %> </span> </h4>
+  <h4 class="text-gray-500 gap-3"> Ends <span class="text-gray-800 font-bold pl-2"><%= event.end_time.strftime("%b %-d at: %H:%M %Z") %> </span> </h4>
+  <h4 class="text-gray-500"> Price: <span class="text-gray-800 font-bold pl-2"><%= event.is_free ? "Free" : event.price %></span> </h4>
+  <h4 class="text-gray-500"> Available Spots: <span class="text-gray-800 font-bold pl-2"><%= event.available_spots %></span> </h4>
+  <h4 class="text-gray-500"> Max Application: <span class="text-gray-800 font-bold pl-2"><%= event.maximum_applications %></span> </h4>
+
+    <% if !current_user.upcoming_events.include?(event) && event.start_time > DateTime.now && event.user != current_user %>
+      <%= button_to "JOIN", event_requests_path(event) , class:"btn blue-green w-full", method: :post %>
+    <% end %>
+    <%= link_to  events_path, class:"btn outline w-full text-center" do %>
+          <%= render "shared/icons/arrow_left" %> Back
+    <% end %>
+
+</div>

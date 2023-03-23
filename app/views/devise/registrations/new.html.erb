@@ -1,0 +1,45 @@
+<div class="w-100 min-h-screen" >
+  <div class="flex flex-col justify-center w-[450px] border border-purple-300
+  shadow-lg shadow-purple-300 mx-auto p-3 rounded" >
+
+      <h2 class="text-3xl text-purple-700 pb-3 font-bold" >Sign up</h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field">        
+          <%= f.text_field :full_name, autofocus: true, autocomplete: "full_name", placeholder: "Full name", class: "text-input" %>
+        </div>
+
+        <div class="field">        
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "Email", class: "text-input" %>
+        </div>
+
+        <div class="field">       
+          <%= f.text_field :gender, autofocus: true, autocomplete: "gender",placeholder: "Gender", class: "text-input" %>
+        </div>        
+
+        <div class="field">      
+          <%= f.number_field :age, autofocus: true, autocomplete: "age",placeholder: "Age", class: "text-input" %>
+        </div>
+
+
+        <div class="field">        
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "text-input" %>
+        </div>
+
+        <div class="field">         
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "New password", class: "text-input" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign up", class: "btn blue-green mb-3" %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+
+  </div>
+</div>
